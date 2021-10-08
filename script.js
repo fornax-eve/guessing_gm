@@ -21,7 +21,7 @@ const guessing = function() {
         if (my_number) {
             if (isNumber(my_number)) {
                 switch (true) {
-                    case my_number < random :
+                    case (my_number > random) && (my_number <= 100) :
                         client_lives--;
                         if (client_lives > 0) {
                             alert(`Загаданное число меньше, осталось попыток ${client_lives}`);
@@ -35,7 +35,7 @@ const guessing = function() {
                             }
                         }
                         break;
-                    case my_number > random :
+                    case (my_number < random) && (my_number > 0) :
                         client_lives--;
                         if (client_lives > 0) {
                             alert(`Загаданное число больше, осталось попыток ${client_lives}`);
@@ -56,6 +56,14 @@ const guessing = function() {
                         } else {
                             alert("Спасибо за успешную игру!")
                         }
+                        break;
+                    case my_number > 100:
+                        alert('Вы ввели недопустимое значение');
+                        guess(random_number);
+                        break;
+                    case my_number < 1:
+                        alert('Вы ввели недопустимое значение');
+                        guess(random_number);
                         break;
                 }
             } else {
